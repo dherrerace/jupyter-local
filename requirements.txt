@@ -1,0 +1,5 @@
+jupyterlab
+jupyterlab-spreadsheet-editor
+jupyter-collaboration
+jupyter-lsp
+jupyterlab-rise
