@@ -6,9 +6,12 @@ You just need [podman](https://podman.io) to run this.
 
 ## About the environment
 
-It's a Fedora 38 container that installs the latest version
+It's a Fedora container that installs the latest version
 of jupyter available on pip. It also installs some useful utilities, like
-simple spreadsheet support and colaboration tools.
+support for colaboration.
+
+During the image build process it also goes through the scripts folder and
+runs the scripts inside there, this is for the purpose of installing extra kernels.
 
 Jupyter is started only with access to the jupyter_stuff folder, this folder's
 permissions are changed during runtime so it's able to be accesed by the jupyter

@@ -1,12 +1,14 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
-podman build -t jupyter-local-image .
+set -e
+
+./prepare.sh
 
 mkdir -p jupyter_stuff/.local/share/jupyter/runtime
 
 podman unshare chown $UID:$UID -R $(pwd)/jupyter_stuff
 
-podman run -ti --rm \
+(podman run -ti --rm \
     --name=jupyter-local \
     --user $UID \
     -v $(pwd)/jupyter_stuff:/jupyter_stuff:Z \
@@ -17,7 +19,10 @@ podman run -ti --rm \
         --ServerApp.ip=0.0.0.0 \
         --ServerApp.port=8888 \
         --LabApp.collaborative=True \
-        --no-browser
+        --no-browser) && true
+
+ERR=$?
 
 podman unshare chown 0:0 -R $(pwd)/jupyter_stuff
 
+exit $ERR

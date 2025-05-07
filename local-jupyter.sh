@@ -1,6 +1,8 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
-podman build -t jupyter-local-image .
+set -e
+
+./prepare.sh
 
 mkdir -p jupyter_stuff/.local/share/jupyter/runtime
 
@@ -25,13 +27,15 @@ podman logs -f --color jupyter-local &
 CONTAINER_IP=$(podman inspect jupyter-local -f '{{ .NetworkSettings.IPAddress }}')
 
 mkdir -p ./firefox_profile
-podman unshare --rootless-netns \
+(podman unshare --rootless-netns \
     firefox \
         -P "Jupyter-Profile" \
         --profile ./firefox_profile \
-        --private-window http://${CONTAINER_IP}:8888/lab
+        --private-window http://${CONTAINER_IP}:8888/lab) && true
+ERR=$?
 
 podman stop jupyter-local
 
 podman unshare chown 0:0 -R $(pwd)/jupyter_stuff
 
+exit $ERR
