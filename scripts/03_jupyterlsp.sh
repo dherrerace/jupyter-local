@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-pip install jupyter-lsp \
+/opt/venv/bin/python -m pip install jupyter-lsp \
     python-lsp-server[all]

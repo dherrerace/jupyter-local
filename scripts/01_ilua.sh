@@ -2,4 +2,4 @@
 
 dnf install -y lua
 
-pip install ilua
+/opt/venv/bin/python -m pip install ilua

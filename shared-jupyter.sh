@@ -15,7 +15,7 @@ podman unshare chown $UID:$UID -R $(pwd)/jupyter_stuff
     --workdir=/jupyter_stuff \
     -p=8888:8888 \
     localhost/jupyter-local-image:latest \
-    python3 -m jupyterlab \
+    /opt/venv/bin/python -m jupyterlab \
         --ServerApp.ip=0.0.0.0 \
         --ServerApp.port=8888 \
         --LabApp.collaborative=True \

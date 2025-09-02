@@ -3,12 +3,14 @@ FROM quay.io/fedora/fedora:42
 RUN dnf -y update
 
 RUN dnf -y install \
+        python3.12 \
         python3-pip \
         git
 
 ADD requirements.txt /
 
-RUN pip install -r /requirements.txt
+RUN python3.12 -m venv /opt/venv
+RUN /opt/venv/bin/pip install -r /requirements.txt
 
 # Add custom stuff to the container
 WORKDIR /opt

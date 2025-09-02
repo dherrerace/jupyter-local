@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-pip install jupyterlab-amphi
+/opt/venv/bin/python -m pip install jupyterlab-amphi

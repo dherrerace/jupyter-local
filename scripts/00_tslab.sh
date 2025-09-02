@@ -5,4 +5,4 @@ dnf -y install \
         npm
 
 npm install -g tslab
-tslab install --python=python3
+tslab install --python=/opt/venv/bin/python

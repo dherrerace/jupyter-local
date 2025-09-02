@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-pip install iplantuml
+/opt/venv/bin/python -m pip install iplantuml
