@@ -15,11 +15,12 @@ podman unshare chown $UID:$UID -R $(pwd)/jupyter_stuff
     --workdir=/jupyter_stuff \
     -p=8888:8888 \
     localhost/jupyter-local-image:latest \
-    /opt/venv/bin/python -m jupyterlab \
-        --ServerApp.ip=0.0.0.0 \
-        --ServerApp.port=8888 \
-        --LabApp.collaborative=True \
-        --no-browser) && true
+    /opt/venv/bin/jupyverse \
+        --host 0.0.0.0 \
+        --port 8888 \
+        --set frontend.collaborative=true \
+        --set auth.mode=token \
+) && true
 
 ERR=$?
 
