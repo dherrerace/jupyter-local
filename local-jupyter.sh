@@ -15,11 +15,12 @@ podman run -d --rm \
     -v $(pwd)/jupyter_stuff:/jupyter_stuff:Z \
     --workdir=/jupyter_stuff \
     localhost/jupyter-local-image:latest \
-    /opt/venv/bin/jupyverse \
-        --host 0.0.0.0 \
-        --port 8888 \
-        --set frontend.collaborative=true \
-        --set auth.mode=noauth
+    python3 -m jupyterlab \
+        --ServerApp.ip=0.0.0.0 \
+        --ServerApp.port=8888 \
+        --LabApp.collaborative=True \
+        --IdentityProvider.token= \
+        --no-browser
 podman logs -f --color jupyter-local &
 
 # Run firefox inside container network
