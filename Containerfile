@@ -28,5 +28,7 @@ ADD scripts/05_*.sh /scripts/
 RUN bash /scripts/05_*.sh
 ADD scripts/06_*.sh /scripts/
 RUN bash /scripts/06_*.sh
+ADD scripts/07_*.sh /scripts/
+RUN bash /scripts/07_*.sh
 
 CMD python3 -m jupyterlab
