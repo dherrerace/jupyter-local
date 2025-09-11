@@ -4,6 +4,6 @@ set -e
 
 dnf -y install rust rust-src cargo
 
-cargo install --locked evcxr_jupyter
+cargo install --root /usr/local --locked evcxr_jupyter
 
-env JUPYTER_PATH=/opt/venv/share/jupyter/ /root/.cargo/bin/evcxr_jupyter --install
+env JUPYTER_PATH=/opt/venv/share/jupyter/ /usr/local/bin/evcxr_jupyter --install

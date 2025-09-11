@@ -10,7 +10,8 @@ podman unshare chown $UID:$UID -R $(pwd)/jupyter_stuff
 
 (podman run -ti --rm \
     --name=jupyter-local \
-    --user $UID \
+    --user $USER \
+    --hostuser $USER \
     -v $(pwd)/jupyter_stuff:/jupyter_stuff:Z \
     --workdir=/jupyter_stuff \
     -p=8888:8888 \
